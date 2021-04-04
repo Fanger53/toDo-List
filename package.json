@@ -13,9 +13,16 @@
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.17.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "css-loader": "^5.2.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
