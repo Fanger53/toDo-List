@@ -1,0 +1,38 @@
+{
+  "name": "toDo-List",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <a href=\"https://github.com/Fanger53/restaurant-webpack/tree/development\">\r     <img src=\"https://res.cloudinary.com/growsurf-prod/image/upload/v1582211139/production/gnysw2objzekbagrqiax.png\" alt=\"Logo\" width=\"350\" height=\"70\">\r   </a>\r </p>",
+  "private": true,
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.17.2"
+  },
+  "devDependencies": {
+    "css-loader": "^5.2.0",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fanger53/toDo-List.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fanger53/toDo-List/issues"
+  },
+  "homepage": "https://github.com/Fanger53/toDo-List#readme"
+}
