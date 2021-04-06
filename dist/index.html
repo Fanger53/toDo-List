@@ -11,8 +11,25 @@
 </head>
 <body>
   <div id="content">
-  
-  </div>  
+	  <h1>To Do List</h1>
+
+	<form id="formToDo">
+ 	 	<label for="ftitle"Title:</label><br>
+ 	  	<input type="text" id="ftitle" name="ftitle" value="the stranger"><br>
+ 	  	<label for="fdes">Description:</label><br>
+ 	  	<input type="text" id="fdes" name="fdes" value="is a book"><br>
+		<label for="fdue">Due date:</label><br>
+ 	  	<input type="date" id="fdue" name="fdue" value="12/12/12"><br>
+		<label for="fnum">Priority:</label><br>
+ 	  	<input type="text" min="1" max="10" id="fnum" name="fnum" value="0"><br><br>
+
+ 	  	<input type="submit" value="Submit">
+	</form>
+
+	<div id="list">
+
+	</div>
+  </div>
   <script src="./main.js"></script>
 </body>
 </html>
