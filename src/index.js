@@ -1,3 +1,4 @@
+import "./style.scss";
 class toDo {
   constructor(title, des, date, num) {
     this.fdes = des;

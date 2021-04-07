@@ -4,29 +4,43 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maita Restaurant</title>
+  <title>To Do List</title>
+	<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
   <script
       src="https://kit.fontawesome.com/cf19c7517f.js"
       crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="content">
+  <div class="card rounded col-3 " id="content">
 	  <h1>To Do List</h1>
 
-	<form id="formToDo">
- 	 	<label for="ftitle"Title:</label><br>
- 	  	<input type="text" id="ftitle" name="ftitle" value="the stranger"><br>
- 	  	<label for="fdes">Description:</label><br>
- 	  	<input type="text" id="fdes" name="fdes" value="is a book"><br>
-		<label for="fdue">Due date:</label><br>
- 	  	<input type="date" id="fdue" name="fdue" value="12/12/12"><br>
-		<label for="fnum">Priority:</label><br>
- 	  	<input type="text" min="1" max="10" id="fnum" name="fnum" value="0"><br><br>
+	<form class="container" id="formToDo">
+ 	 	<div class="my-2">
+			<label class="form-label" for="ftitle">Title:</label>
+			<input class="form-control" type="text" id="ftitle" name="ftitle" 	value="the stranger">
+		</div>
+		<div class="my-2">
+ 	  	<label class="form-label" for="fdes">Description:</label>
+ 	  	<input class="form-control" type="text" id="fdes" name="fdes" value="is a book">
+		</div>
+		<div class="my-2">
+			<label class="form-label" for="fdue">Due date:</label>
+			<input class="form-control" type="date" id="fdue" name="fdue" value="12/12/12">
+		</div>
+		<div class="my-2">
+			<label class="form-label" for="fnum">Priority:</label>
+			<input class="form-control" type="text" min="1" max="10" id="fnum" name="fnum" value="0">
+		</div>
 
- 	  	<input type="submit" value="Submit">
+		<input type="submit" class="btn btn-primary my-3" value="Submit">
 	</form>
 
-	<div id="list">
+	<div class="list" id="list">
 
 	</div>
   </div>

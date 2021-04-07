@@ -1,8 +1,28 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  background-image: linear-gradient(120deg, rgb( 233, 124, 16), rgb(221, 61, 61));
 }
 
 h1 {
-  color: red;
+  text-align: center;
+  color: rgb(238, 223, 223);
+}
+
+.card {
+  margin: 20vh auto !important;
+  background-color: transparent;
+}
+
+.list {
+  background-color: transparent;
+}
+
+.btn {
+  width: 100%;
 }
