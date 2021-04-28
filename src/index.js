@@ -7,6 +7,7 @@ const deleteListButton = document.querySelector('[data-delete-list-button]')
 const listDisplayContainer = document.querySelector('[data-list-display-container]')
 const listTitleElement = document.querySelector('[data-list-title]')
 const listTasks = document.querySelector('[data-tasks]')
+const taskTemplate = document.getElementById('task-template')
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId'
@@ -36,7 +37,12 @@ newListForm.addEventListener('submit', e => {
 })
 
 function createList(name) {
-	return { id:Date.now().toString(), name: name, tasks:[]}
+	return { id:Date.now().toString(), name: name, tasks:[
+		{id:'jbhk',
+		name: 'test',
+		complete: false
+	}
+	]}
 	
 }
 
@@ -61,7 +67,21 @@ function render()	{
 		listDisplayContainer.style.display = ''
 		listTitleElement.innerText = selectedList.name
 		clearElement(listTasks)
+		renderTasks(selectedList)
 	 }
+}
+
+function renderTasks(selectedList) {
+	selectedList.tasks.forEach(task =>{
+		const taskElement =document.importNode(taskTemplate.content, true)
+		const checkbox = taskElement.querySelector('input')
+		checkbox.id = task.id
+		checkbox.checked = task.complete
+		const label = taskElement.querySelector('label')
+		label.htmlFor = task.id
+		label.append(task.name)
+		listTasks.appendChild(taskElement)
+	})
 }
 
 
