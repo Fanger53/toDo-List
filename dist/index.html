@@ -46,10 +46,11 @@
 			</div>
 
 			<div class="new-task-creator">
-					<form >
+					<form data-new-task-form>
 							<input 
 								type="text"
 								class="new task"
+								data-new-task-input
 								placeholder="new task name"
 								aria-label="new task name"
 							/>
@@ -58,7 +59,7 @@
 			</div>
 
 			<div class="delete-stuff">
-				<button class="btn delete">Clear completed tasks</button>
+				<button class="btn delete" data-clear-complete-button >Clear completed tasks</button>
 				<button class="btn delete" data-delete-list-button>Delete Project</button>
 			</div>
 		</div>
