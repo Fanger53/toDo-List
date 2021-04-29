@@ -4,12 +4,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --clr-primary: rgb(54, 112, 199);
-  --clr-light: #f4f4f4;
-  --clr-dark: #333;
-  --clr-warning: rgb(99, 36, 36);
-}
 
 *,
 *::before,
@@ -23,8 +17,8 @@ body {
   font-family: "Work Sans", sans-serif;
   font-weight: 300;
   font-size: 1.5rem;
-  background-color: var(--clr-primary);
-  color: var(--clr-light);
+  background-image: linear-gradient(120deg, #e2c35d, #d88771);
+  color: white;
 
   display: grid;
   grid:
@@ -142,13 +136,13 @@ form {
 
 .todo-header {
   padding: var(--spacer);
-  background: #e4e4e4;
+  background: #771d1d;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.list-title {
+.project-title {
   margin: 0 1em 0 0;
 }
 
@@ -209,7 +203,7 @@ form {
 .task:hover .custom-checkbox,
 [type="checkbox"]:focus + label .custom-checkbox {
   transform: scale(1.2);
-  color: var(--clr-primary);
+  color: black;
 }
 
 [type="checkbox"]:checked + label .custom-checkbox {
