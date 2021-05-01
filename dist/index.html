@@ -40,15 +40,15 @@
 			<div class="todo-list rounded border col-md-8" data-list-display-container>
 				<div class="todo-header rounded">
 					<h2 class="project-title rounded " data-list-title></h2>
-					<button class="btn delete" data-clear-complete-button >Clear completed tasks</button>
+					<button class="btn border p-2 " data-clear-complete-button >Clear completed tasks</button>
+					<button class="btn p-2 border">new Task</button>	
 				</div>
 		
 				<div class="todo-body ">
 					<div class="tasks" data-tasks>
-						
 					</div>
 		
-					<div class="new-task-creator">
+					<!-- <div class="new-task-creator">
 							<form data-new-task-form>
 									<input 
 										type="text"
@@ -70,7 +70,7 @@
 									
 									<button class="btn create" aria-label="create new task">+</button>
 								</form>
-					</div>
+					</div> -->
 		
 					<div class="delete-stuff">
 						
@@ -102,28 +102,39 @@
 			</div>
 		</div>
 	</div>
-	<!-- <div class="modal-bg">
-		<form class="container " >
-			<div class="my-2">
-			<label class="form-label" for="ftitle">Title:</label>
-			<input class="form-control" type="text" id="ftitle" name="ftitle" 	value="the stranger">
+	<div class="modal-bg">
+		<div class="modal-form">
+			<form class="row container" data-new-task-form>
+				<div>
+					<label class="form-label px-3" for="name">Name of task</label>
+					<input class="form-control" type="text"
+						class="new task"
+						id="name"
+						data-new-task-name
+						placeholder="new task "
+						aria-label="new task " >
+				</div>
+				<div>
+					<label class="form-label px-3" for="description">Description </label>
+					<input class="form-control" type="text"
+					class="new task"
+					data-new-task-desc
+					placeholder="description "
+					aria-label="description "
+					name="desc">
+				</div>
+				<div>
+					<label class="form-label px-3" for="priority">Priority</label>
+					<input class="form-control " type="number" min="1" max="9" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" placeholder="Priority (1 to 9)" data-task-priority>
+				</div>
+				<div>
+					<label class="form-label px-3" for="date">Date</label>
+					<input  type="date" class="form-control border" id="date" data-task-time />
+				</div>
+				<button class="btn mt-2 create border" aria-label="create new task">New Task</button>
+			</form>
 		</div>
-		<div class="my-2">
-			 <label class="form-label" for="fdes">Description:</label>
-			 <input class="form-control" type="text" id="fdes" name="fdes" value="is a book">
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="fdue">Due date:</label>
-			<input class="form-control" type="date" id="fdue" name="fdue" value="12/12/12">
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="fnum">Priority:</label>
-			<input class="form-control" type="text" min="1" max="10" id="fnum" name="fnum" value="0">
-		</div>
-
-		<input type="submit" class="btn btn-primary my-3" value="Submit">
-		</form>
-	</div> -->
+	</div>
   <script src="./main.js"></script>
 </body>
 </html>
