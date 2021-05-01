@@ -41,7 +41,7 @@
 				<div class="todo-header rounded">
 					<h2 class="project-title rounded " data-list-title></h2>
 					<button class="btn border p-2 " data-clear-complete-button >Clear completed tasks</button>
-					<button class="btn p-2 border">new Task</button>	
+					<button class="btn p-2 border" id="button-modal">new Task</button>	
 				</div>
 		
 				<div class="todo-body ">
@@ -102,8 +102,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal-bg">
-		<div class="modal-form">
+	<div class="modal-bg row justify-content-center modal-active" id="modal">
+		<div class="modal-form rounded border">
 			<form class="row container" data-new-task-form>
 				<div>
 					<label class="form-label px-3" for="name">Name of task</label>
@@ -131,7 +131,7 @@
 					<label class="form-label px-3" for="date">Date</label>
 					<input  type="date" class="form-control border" id="date" data-task-time />
 				</div>
-				<button class="btn mt-2 create border" aria-label="create new task">New Task</button>
+				<button class="btn my-2 create border" aria-label="create new task">New Task</button>
 			</form>
 		</div>
 	</div>

@@ -232,3 +232,13 @@ form {
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.modal-active {
+  visibility: hidden
+}
+
+.modal-form {
+  width: 60%;
+  height: auto;
+  background-color: rgb(112, 26, 14);
+}

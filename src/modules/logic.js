@@ -10,7 +10,9 @@ const newTaskForm = document.querySelector('[data-new-task-form]');
 const taskInput = document.querySelector('[data-new-task-name]');
 const taskDescription = document.querySelector('[data-new-task-desc]');
 const taskTime = document.querySelector('[data-task-time]');
-const taskPriority = document.querySelector('[data-task-priority]')
+const taskPriority = document.querySelector('[data-task-priority]');
+const buttonModal = document.getElementById('button-modal')
+const modal = document.getElementById('modal');
 const clearCompleteButton = document.querySelector('[data-clear-complete-button]');
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -47,6 +49,10 @@ listsContainer.addEventListener('click', e => {
     selectedListId = e.target.dataset.listId;
     saveAndRender();
   }
+});
+
+buttonModal.addEventListener('click', () => {
+  modal.classList.remove('modal-active');
 });
 
 listTasks.addEventListener('click', e => {
@@ -101,7 +107,9 @@ newTaskForm.addEventListener('submit', e => {
   // taskDesc.value = null;
   const selectedList = lists.find(list => list.id === selectedListId);
   selectedList.tasks.push(task);
+  modal.classList.add('modal-active');
   saveAndRender();
+  
 });
 
 const createList = (name) => ({ id: Date.now().toString(), name, tasks: [] });
