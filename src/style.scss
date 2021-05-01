@@ -20,11 +20,6 @@ body {
   background-image: linear-gradient(120deg, #e2c35d, #d88771);
   color: white;
 
-  display: grid;
-  grid:
-    "header header header header" auto
-    "...... lists  active ......" auto /
-    1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
 }
 
 .title {
@@ -37,9 +32,7 @@ body {
   margin: -0.3em 0 0.5em;
 }
 
-.all-tasks {
-  grid-area: lists;
-}
+
 
 .task-list {
   font-size: 1.2rem;
@@ -128,10 +121,6 @@ form {
 
 .todo-list {
   --spacer: 2rem;
-
-  grid-area: active;
-  background: var(--clr-light);
-  color: var(--clr-dark);
 }
 
 .todo-header {
@@ -213,7 +202,7 @@ form {
 }
 
 [type="checkbox"]:checked + label {
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .task label::after {
@@ -243,4 +232,13 @@ form {
   left: 0;
   bottom: -35px;
   color: var(--clr-light);
+}
+
+.modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }

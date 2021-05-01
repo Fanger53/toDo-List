@@ -17,66 +17,113 @@
 </head>
 <body>
 	<h1 class="title">Todo List</h1>
-
-	<div class="all-tasks">
-		<h2 class="task-list-title">My Projects</h2>
-		<ul class="task-list" data-lists>
-		</ul>
-
-		<form data-new-list-form>
-			<input 
-				type="text"
-				class="new list"
-				data-new-list-input
-				placeholder="new project name"
-				aria-label="new project name"
-			/>
-			<button class="btn create" aria-label="create new list">+</button>
-		</form>
-	</div>
-
-	<div class="todo-list rounded border" data-list-display-container>
-		<div class="todo-header">
-			<h2 class="project-title rounded " data-list-title></h2>
-		</div>
-
-		<div class="todo-body ">
-			<div class="tasks" data-tasks>
-				
-			</div>
-
-			<div class="new-task-creator">
-					<form data-new-task-form>
-							<input 
-								type="text"
-								class="new task"
-								data-new-task-input
-								placeholder="new task "
-								aria-label="new task "
-							/>
-							<button class="btn create" aria-label="create new task">+</button>
-						</form>
-			</div>
-
-			<div class="delete-stuff">
-				<button class="btn delete" data-clear-complete-button >Clear completed tasks</button>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h2 class="task-list-title">My Projects</h2>
+				<ul class="task-list" data-lists>
+				</ul>
+		
+				<form data-new-list-form>
+					<input 
+						type="text"
+						class="new list"
+						data-new-list-input
+						placeholder="new project name"
+						aria-label="new project name"
+					/>
+					<button class="btn create" aria-label="create new list">+</button>
+				</form>
 				<button class="btn delete" data-delete-list-button>Delete Project</button>
 			</div>
+		
+			<div class="todo-list rounded border col-md-8" data-list-display-container>
+				<div class="todo-header rounded">
+					<h2 class="project-title rounded " data-list-title></h2>
+					<button class="btn delete" data-clear-complete-button >Clear completed tasks</button>
+				</div>
+		
+				<div class="todo-body ">
+					<div class="tasks" data-tasks>
+						
+					</div>
+		
+					<div class="new-task-creator">
+							<form data-new-task-form>
+									<input 
+										type="text"
+										class="new task"
+										data-new-task-name
+										placeholder="new task "
+										aria-label="new task "
+									/>
+									<input 
+										type="text"
+										class="new task"
+										data-new-task-desc
+										placeholder="description "
+										aria-label="description "
+										name="desc"
+									/>
+									<input  type="date" class="new task border" data-task-time />
+									<input class="new task" type="text" min="1" max="9" data-task-priority >
+									
+									<button class="btn create" aria-label="create new task">+</button>
+								</form>
+					</div>
+		
+					<div class="delete-stuff">
+						
+					</div>
+				</div>
+			</div>
+			<template id="task-template">
+				<div class="task">
+					<input 
+						type="checkbox"
+					/>
+					<label >
+						<span class="custom-checkbox"></span>
+					</label>
+					<div class="d-flex ">
+						<div class="p-3 border">
+							<p id="task-time" ></p>
+							</div>
+						<div class="p-3">	
+							<p id="task-prior"></p>
+							</div>
+					</div>
+					<div class="d-block border rounded p-3">
+						<p class="mr-5">Description: </p>
+						<p id="description-p" class="ml-3"></p>
+						</div>
+				</div>
+			</template>
+			</div>
 		</div>
 	</div>
-	<template id="task-template">
-		<div class="task">
-			<input 
-				type="checkbox"
-			/>
-			<label >
-				<span class="custom-checkbox"></span>
-			</label>
+	<!-- <div class="modal-bg">
+		<form class="container " >
+			<div class="my-2">
+			<label class="form-label" for="ftitle">Title:</label>
+			<input class="form-control" type="text" id="ftitle" name="ftitle" 	value="the stranger">
 		</div>
-	</template>
+		<div class="my-2">
+			 <label class="form-label" for="fdes">Description:</label>
+			 <input class="form-control" type="text" id="fdes" name="fdes" value="is a book">
+		</div>
+		<div class="my-2">
+			<label class="form-label" for="fdue">Due date:</label>
+			<input class="form-control" type="date" id="fdue" name="fdue" value="12/12/12">
+		</div>
+		<div class="my-2">
+			<label class="form-label" for="fnum">Priority:</label>
+			<input class="form-control" type="text" min="1" max="10" id="fnum" name="fnum" value="0">
+		</div>
 
- 
-	</div>
+		<input type="submit" class="btn btn-primary my-3" value="Submit">
+		</form>
+	</div> -->
   <script src="./main.js"></script>
 </body>
 </html>
