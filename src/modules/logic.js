@@ -11,8 +11,16 @@ const taskInput = document.querySelector('[data-new-task-name]');
 const taskDescription = document.querySelector('[data-new-task-desc]');
 const taskTime = document.querySelector('[data-task-time]');
 const taskPriority = document.querySelector('[data-task-priority]');
-const buttonModal = document.getElementById('button-modal')
+const buttonModal = document.getElementById('button-modal');
 const modal = document.getElementById('modal');
+const buttonCancel = document.querySelector('.cancel-button');
+const editTask = document.querySelector(['data-task-edit']);
+const modalEdit = document.getElementById('modal-edit');
+const formEdit = document.querySelector(['data-new-task-form-edit']);
+const taskNameEdit = document.querySelector(['data-edit-task-name']);
+const taskDescriptionEdit = document.querySelector(['data-edit-task-desc']);
+const taskPriorityEdit = document.querySelector(['data-edit-task-priority']);
+const taskTimeEdit = document.querySelector(['data-edit-task-time']);
 const clearCompleteButton = document.querySelector('[data-clear-complete-button]');
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -54,6 +62,7 @@ listsContainer.addEventListener('click', e => {
 buttonModal.addEventListener('click', () => {
   modal.classList.remove('modal-active');
 });
+
 
 listTasks.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === 'input') {
@@ -103,19 +112,65 @@ newTaskForm.addEventListener('submit', e => {
   if (taskP == null || taskP === '') return;
   const task = createTask(taskName, taskDesc, taskT, taskP);
   taskInput.value = null;
-  // taskT.value = null;
-  // taskDesc.value = null;
   const selectedList = lists.find(list => list.id === selectedListId);
   selectedList.tasks.push(task);
   modal.classList.add('modal-active');
   saveAndRender();
-  
 });
 
-const createList = (name) => ({ id: Date.now().toString(), name, tasks: [] });
+buttonCancel.addEventListener('click', () => {
+  modal.classList.add('modal-active');
+});
 
 
-const renderTasks = (selectedList) => {
+
+const getProjectIndex = (id) => lists.findIndex((pj) => pj.id === id);
+
+const editTaskForm = (e) => {
+  e.preventDefault();
+  const taskTitle = taskNameEdit.value;
+  if (taskTitle === null || taskTitle === '') return;
+  const taskDescription = taskDescriptionEdit.value;
+  if (taskDescription === null || taskDescription === '') return;
+  const taskPriority = taskPriorityEdit.value;
+  if (taskPriority === null || taskPriority === '') return;
+  const taskDate = taskTimeEdit.value;
+  if (taskDate === null || taskDate === '') return;
+  const task = createTask(taskTitle, taskDescription, taskDate, taskPriority);
+  taskNameEdit.value = null;
+  taskDescriptionEdit.value = null;
+  taskTimeEdit.value = null;
+  taskPriorityEdit.value = null;
+  modalEdit.classList.remove('modal-active');
+  const projectIndex = getProjectIndex(selectedListId);
+  const taskIndex = lists[projectIndex].tasks.findIndex(
+    (pj) => pj.id === e.target.id,
+  );
+  const selectedList = lists.find((list) => list.id === selectedListId);
+
+  lists[projectIndex].tasks.splice(taskIndex, 1);
+  selectedList.tasks.push(task);
+
+  saveAndRender();
+};
+
+
+
+document.addEventListener('keydown', ({ key }) => {
+  if (key === 'Escape') {
+    modal.classList.add('modal-active');
+  }
+});
+
+
+
+
+function createList(name) {
+  return ({ id: Date.now().toString(), name, tasks: [] });
+}
+
+
+function renderTasks(selectedList) {
   selectedList.tasks.forEach(task => {
     const taskElement = document.importNode(taskTemplate.content, true);
     const checkbox = taskElement.querySelector('input');
@@ -127,12 +182,14 @@ const renderTasks = (selectedList) => {
     const descTask = taskElement.getElementById('description-p');
     const descTi = taskElement.getElementById('task-time');
     const priorTask = taskElement.getElementById('task-prior');
+    const editButton = taskElement.getElementById('edit');
+    editButton.id = task.id;
     priorTask.append(task.prior);
     descTi.append(task.time);
     descTask.append(task.desc);
     listTasks.appendChild(taskElement);
   });
-};
+}
 
 
 const renderList = () => {
@@ -154,6 +211,26 @@ const clearElement = (element) => {
   }
 };
 
+const clickHandler = (e) => {
+  if (e.target.matches('.tryYes')) {
+    modalEdit.classList.remove('modal-active');
+    const projectIndex = getProjectIndex(selectedListId);
+    const task = lists[projectIndex].tasks.find(
+      (task) => task.id === e.target.id,
+    );
+    const title = document.getElementById('modalname');
+    const description = document.getElementById('modadescription');
+    title.value = task.name;
+    description.value = task.desc;
+    const date = document.getElementById('modaldate');
+    date.value = task.time;
+    const priority = document.getElementById('modalpriority');
+    priority.value = task.prior;
+  }
+};
+
+document.addEventListener('click', clickHandler);
+
 export {
-  render
+  render,
 };

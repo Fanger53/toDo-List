@@ -22,6 +22,8 @@ body {
 
 }
 
+$red: rgb(167, 20, 20);
+
 .title {
   grid-area: header;
   text-align: center;
@@ -224,6 +226,10 @@ form {
   color: var(--clr-light);
 }
 
+.priority {
+  color: $red;
+}
+
 .modal-bg {
   position: fixed;
   width: 100%;
@@ -241,4 +247,9 @@ form {
   width: 60%;
   height: auto;
   background-color: rgb(112, 26, 14);
+}
+
+.cancel-button {
+  width: 93%;
+  margin-left: 2%;
 }

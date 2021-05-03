@@ -48,30 +48,6 @@
 					<div class="tasks" data-tasks>
 					</div>
 		
-					<!-- <div class="new-task-creator">
-							<form data-new-task-form>
-									<input 
-										type="text"
-										class="new task"
-										data-new-task-name
-										placeholder="new task "
-										aria-label="new task "
-									/>
-									<input 
-										type="text"
-										class="new task"
-										data-new-task-desc
-										placeholder="description "
-										aria-label="description "
-										name="desc"
-									/>
-									<input  type="date" class="new task border" data-task-time />
-									<input class="new task" type="text" min="1" max="9" data-task-priority >
-									
-									<button class="btn create" aria-label="create new task">+</button>
-								</form>
-					</div> -->
-		
 					<div class="delete-stuff">
 						
 					</div>
@@ -86,11 +62,15 @@
 						<span class="custom-checkbox"></span>
 					</label>
 					<div class="d-flex ">
-						<div class="p-3 border">
+						<div class="p-2 ">
 							<p id="task-time" ></p>
 							</div>
-						<div class="p-3">	
-							<p id="task-prior"></p>
+						<div class="p-2">
+							<p >Priority:<span class="p-2 priority" id="task-prior" ></span> </p>
+							</div>
+							<div>
+								<button class="btn border rounded mx-2 p-1 tryYes " id="edit">Edit</button>
+								<!-- <button class="btn border rounded mx-2 p-1 " id="delete-button" data-delete-task>Delete</button> -->
 							</div>
 					</div>
 					<div class="d-block border rounded p-3">
@@ -102,7 +82,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal-bg row justify-content-center modal-active" id="modal">
+	<!-- modal -->
+	<div class="modal-bg row justify-content-center " id="modal">
 		<div class="modal-form rounded border">
 			<form class="row container" data-new-task-form>
 				<div>
@@ -133,8 +114,46 @@
 				</div>
 				<button class="btn my-2 create border" aria-label="create new task">New Task</button>
 			</form>
+				<button class="btn border cancel-button p-1 rounded create" >Cancel</button>
 		</div>
 	</div>
+	<!-- modal edit -->
+	<div class="modal-bg row justify-content-center modal-active" id="modal-edit">
+		<div class="modal-form rounded border">
+			<div class="row container" data-new-task-form-edit>
+				<div>
+					<label class="form-label px-3" for="modalname">Name of task</label>
+					<input class="form-control" type="text"
+						class="new task"
+						id="modalname"
+						data-edit-task-name
+						placeholder="new task "
+						aria-label="new task " >
+				</div>
+				<div>
+					<label class="form-label px-3" for="modadescription">Description </label>
+					<input class="form-control" type="text"
+					class="new task"
+					id="modadescription"
+					data-edit-task-desc
+					placeholder="description "
+					aria-label="description "
+					name="desc">
+				</div>
+				<div>
+					<label class="form-label px-3" for="modalpriority">Priority</label>
+					<input class="form-control " type="number" min="1" max="9" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" placeholder="Priority (1 to 9)" data-edit-task-priority id="modalpriority">
+				</div>
+				<div>
+					<label class="form-label px-3" for="modaldate">Date</label>
+					<input  type="date" class="form-control border" id="modaldate" data-edit-task-time />
+				</div>
+				<button class="btn my-2 create border" aria-label="create new task">New Task</button>
+			</div>
+				<button class="btn border cancel-button p-1 rounded create">Cancel</button>
+		</div>
+	</div>
+	
   <script src="./main.js"></script>
 </body>
 </html>
