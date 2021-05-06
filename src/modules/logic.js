@@ -14,13 +14,14 @@ const taskPriority = document.querySelector('[data-task-priority]');
 const buttonModal = document.getElementById('button-modal');
 const modal = document.getElementById('modal');
 const buttonCancel = document.querySelector('.cancel-button');
-const editTask = document.querySelector(['data-task-edit']);
+const buttonCancelEdit = document.getElementById('cancel-button');
 const modalEdit = document.getElementById('modal-edit');
-const formEdit = document.querySelector(['data-new-task-form-edit']);
-const taskNameEdit = document.querySelector(['data-edit-task-name']);
-const taskDescriptionEdit = document.querySelector(['data-edit-task-desc']);
-const taskPriorityEdit = document.querySelector(['data-edit-task-priority']);
-const taskTimeEdit = document.querySelector(['data-edit-task-time']);
+const editTask = document.getElementById('form-edit');
+// const taskNameEdit = document.getElementsByClassName('edit-task-name');
+const taskNameEdit = document.getElementById('modalname');
+const taskDescriptionEdit = document.getElementById('modadescription');
+const taskPriorityEdit = document.getElementById('modalpriority');
+const taskTimeEdit = document.getElementById('modaldate');
 const clearCompleteButton = document.querySelector('[data-clear-complete-button]');
 
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -122,6 +123,9 @@ buttonCancel.addEventListener('click', () => {
   modal.classList.add('modal-active');
 });
 
+buttonCancelEdit.addEventListener('click', () => {
+  modalEdit.classList.add('modal-active');
+});
 
 
 const getProjectIndex = (id) => lists.findIndex((pj) => pj.id === id);
@@ -141,7 +145,6 @@ const editTaskForm = (e) => {
   taskDescriptionEdit.value = null;
   taskTimeEdit.value = null;
   taskPriorityEdit.value = null;
-  modalEdit.classList.remove('modal-active');
   const projectIndex = getProjectIndex(selectedListId);
   const taskIndex = lists[projectIndex].tasks.findIndex(
     (pj) => pj.id === e.target.id,
@@ -150,19 +153,18 @@ const editTaskForm = (e) => {
 
   lists[projectIndex].tasks.splice(taskIndex, 1);
   selectedList.tasks.push(task);
-
   saveAndRender();
+  modalEdit.classList.add('modal-active');
 };
 
 
+editTask.addEventListener('click', editTaskForm);
 
 document.addEventListener('keydown', ({ key }) => {
   if (key === 'Escape') {
     modal.classList.add('modal-active');
   }
 });
-
-
 
 
 function createList(name) {
@@ -184,6 +186,8 @@ function renderTasks(selectedList) {
     const priorTask = taskElement.getElementById('task-prior');
     const editButton = taskElement.getElementById('edit');
     editButton.id = task.id;
+    const deleteTask = taskElement.getElementById('delete-button');
+    deleteTask.id = task.id;
     priorTask.append(task.prior);
     descTi.append(task.time);
     descTask.append(task.desc);
@@ -196,7 +200,7 @@ const renderList = () => {
   lists.forEach(list => {
     const listElement = document.createElement('li');
     listElement.dataset.listId = list.id;
-    listElement.classList.add("list-name");
+    listElement.classList.add('list-name');
     listElement.innerText = list.name;
     if (list.id === selectedListId) {
       listElement.classList.add('active-list');
@@ -210,6 +214,26 @@ const clearElement = (element) => {
     element.removeChild(element.firstChild);
   }
 };
+
+// const deleteLogic = (id) => {
+//   const projectIndex = getProjectIndex(selectedListId);
+//   const taskIndex = lists[projectIndex].tasks.findIndex(
+//     (task) => task.id === id,
+//   );
+//   lists[projectIndex].tasks.splice(taskIndex, 1);
+//   const confirmButton = document.getElementById('last-delete');
+//   confirmButton.removeEventListener('click', deleteLogic);
+//   saveAndRender();
+// };
+
+// const deleteTask = (e) => {
+//   if (e.target.matches('.delete-task')) {
+//     const confirmButton = document.getElementById('last-delete');
+//     confirmButton.addEventListener('click', deleteLogic(e.target.id));
+//   }
+// };
+
+// document.addEventListener('click', deleteTask);
 
 const clickHandler = (e) => {
   if (e.target.matches('.tryYes')) {
@@ -226,6 +250,7 @@ const clickHandler = (e) => {
     date.value = task.time;
     const priority = document.getElementById('modalpriority');
     priority.value = task.prior;
+    console.log(priority);
   }
 };
 
