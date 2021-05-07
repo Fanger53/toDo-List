@@ -24,6 +24,7 @@ const taskPriorityEdit = document.getElementById('modalpriority');
 const taskTimeEdit = document.getElementById('modaldate');
 const clearCompleteButton = document.querySelector('[data-clear-complete-button]');
 
+
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
@@ -186,8 +187,10 @@ function renderTasks(selectedList) {
     const priorTask = taskElement.getElementById('task-prior');
     const editButton = taskElement.getElementById('edit');
     editButton.id = task.id;
+    console.log(editButton)
     const deleteTask = taskElement.getElementById('delete-button');
     deleteTask.id = task.id;
+    console.log(deleteTask);
     priorTask.append(task.prior);
     descTi.append(task.time);
     descTask.append(task.desc);
@@ -215,25 +218,22 @@ const clearElement = (element) => {
   }
 };
 
-// const deleteLogic = (id) => {
-//   const projectIndex = getProjectIndex(selectedListId);
-//   const taskIndex = lists[projectIndex].tasks.findIndex(
-//     (task) => task.id === id,
-//   );
-//   lists[projectIndex].tasks.splice(taskIndex, 1);
-//   const confirmButton = document.getElementById('last-delete');
-//   confirmButton.removeEventListener('click', deleteLogic);
-//   saveAndRender();
-// };
+const deleteLogic = (id) => {
+  const projectIndex = getProjectIndex(selectedListId);
+  const taskIndex = lists[projectIndex].tasks.findIndex(
+    (task) => task.id === id,
+  );
+  lists[projectIndex].tasks.splice(taskIndex, 1);
+  saveAndRender();
+};
 
-// const deleteTask = (e) => {
-//   if (e.target.matches('.delete-task')) {
-//     const confirmButton = document.getElementById('last-delete');
-//     confirmButton.addEventListener('click', deleteLogic(e.target.id));
-//   }
-// };
+const deleteTask = (e) => {
+  if (e.target.matches('.delete-task')) {
+ deleteLogic(e.target.id);
+  }
+};
 
-// document.addEventListener('click', deleteTask);
+document.addEventListener('click', deleteTask);
 
 const clickHandler = (e) => {
   if (e.target.matches('.tryYes')) {
@@ -250,7 +250,6 @@ const clickHandler = (e) => {
     date.value = task.time;
     const priority = document.getElementById('modalpriority');
     priority.value = task.prior;
-    console.log(priority);
   }
 };
 
