@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+	<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+  <script
+      src="https://kit.fontawesome.com/cf19c7517f.js"
+      crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1 class="title">Todo List</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h2 class="task-list-title">My Projects</h2>
+				<ul class="task-list" data-lists>
+				</ul>
+		
+				<form data-new-list-form>
+					<input 
+						type="text"
+						class="new list"
+						data-new-list-input
+						placeholder="new project name"
+						aria-label="new project name"
+					/>
+					<button class="btn create" aria-label="create new list">+</button>
+				</form>
+				<button class="btn delete" data-delete-list-button>Delete Project</button>
+			</div>
+		
+			<div class="todo-list rounded border col-md-8" data-list-display-container>
+				<div class="todo-header rounded">
+					<h2 class="project-title rounded " data-list-title></h2>
+					<button class="btn border p-2 " data-clear-complete-button >Clear completed tasks</button>
+					<button class="btn p-2 border" id="button-modal">new Task</button>	
+				</div>
+		
+				<div class="todo-body ">
+					<div class="tasks" data-tasks>
+					</div>
+				</div>
+			</div>
+			<template id="task-template">
+				<div class="task">
+					<input 
+						type="checkbox"
+					/>
+					<label >
+						<span class="custom-checkbox"></span>
+					</label>
+					<div class="d-flex ">
+						<div class="p-2 ">
+							<p id="task-time" ></p>
+							</div>
+						<div class="p-2">
+							<p >Priority:<span class="p-2 priority" id="task-prior" ></span> </p>
+							</div>
+							<div>
+								<button class="btn border rounded mx-2 p-1 tryYes " id="edit">Edit</button>
+								<button class="btn border delete-task data-delete-task rounded mx-2 p-1 " id="delete-button" >Delete</button>
+							</div>
+					</div>
+					<div class="d-block border rounded p-3">
+						<p class="mr-5">Description: </p>
+						<p id="description-p" class="ml-3"></p>
+						</div>
+				</div>
+			</template>
+			</div>
+		</div>
+	</div>
+	<!-- modal -->
+	<div class="modal-bg row justify-content-center modal-active " id="modal">
+		<div class="modal-form rounded border">
+			<form class="row container" data-new-task-form>
+				<div>
+					<label class="form-label px-3" for="name">Name of task</label>
+					<input class="form-control" type="text"
+						class="new task"
+						id="name"
+						data-new-task-name
+						placeholder="new task "
+						aria-label="new task " >
+				</div>
+				<div>
+					<label class="form-label px-3" for="description">Description </label>
+					<input class="form-control" type="text"
+					class="new task"
+					data-new-task-desc
+					placeholder="description "
+					aria-label="description "
+					name="desc">
+				</div>
+				<div>
+					<label class="form-label px-3" for="priority">Priority</label>
+					<input class="form-control " type="number" min="1" max="9" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" placeholder="Priority (1 to 9)" data-task-priority>
+				</div>
+				<div>
+					<label class="form-label px-3" for="date">Date</label>
+					<input  type="date" class="form-control border" id="date" data-task-time />
+				</div>
+				<button class="btn my-2 create border" aria-label="create new task">New Task</button>
+			</form>
+				<button class="btn border cancel-button p-1 rounded create" >Cancel</button>
+		</div>
+	</div>
+	<!-- modal edit -->
+	<div class="modal-bg row justify-content-center modal-active" id="modal-edit">
+		<div class="modal-form rounded border">
+			<form class="row container" data-new-task-form-edit >
+				<div>
+					<label class="form-label px-3" for="modalname">Name of task</label>
+					<input class="form-control" type="text"
+						class="new task edit-task-name"
+						id="modalname"
+						name="edit-task-name"
+						placeholder="new task "
+						aria-label="new task " >
+				</div>
+				<div>
+					<label class="form-label px-3" for="modadescription">Description </label>
+					<input class="form-control" type="text"
+					class="new task edit-task-desc"
+					id="modadescription"
+					
+					placeholder="description "
+					aria-label="description "
+					name="desc">
+				</div>
+				<div>
+					<label class="form-label px-3" for="modalpriority">Priority</label>
+					<input class="form-control edit-task-priority" type="number" min="1" max="9" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==1) return false;" placeholder="Priority (1 to 9)"  id="modalpriority">
+				</div>
+				<div>
+					<label class="form-label px-3" for="modaldate">Date</label>
+					<input  type="date" class="form-control border edit-task-time" id="modaldate"  />
+				</div>
+				<button class="btn my-2 create border" aria-label="create new task" data-task-edit type="button" id="form-edit">Edit Task</button>
+			</form>
+				<button class="btn border  p-1 rounded cancel-button create" id="cancel-button">Cancel</button>
+		</div>
+	</div>
+	
+  <script src="./main.js"></script>
+</body>
+</html>

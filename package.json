@@ -1,0 +1,50 @@
+{
+  "name": "toDo-List",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <a href=\"https://github.com/Fanger53/restaurant-webpack/tree/development\">\r     <img src=\"https://res.cloudinary.com/growsurf-prod/image/upload/v1582211139/production/gnysw2objzekbagrqiax.png\" alt=\"Logo\" width=\"350\" height=\"70\">\r   </a>\r </p>",
+  "private": true,
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "date-fns": "^2.21.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "node-sass": "^5.0.0",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.17.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.0",
+    "sass": "^1.32.8",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fanger53/toDo-List.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fanger53/toDo-List/issues"
+  },
+  "homepage": "https://github.com/Fanger53/toDo-List#readme",
+  "main": "webpack.config.js"
+}
