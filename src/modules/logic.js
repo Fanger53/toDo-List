@@ -11,12 +11,8 @@ const taskInput = document.querySelector('[data-new-task-name]');
 const taskDescription = document.querySelector('[data-new-task-desc]');
 const taskTime = document.querySelector('[data-task-time]');
 const taskPriority = document.querySelector('[data-task-priority]');
-const buttonModal = document.getElementById('button-modal');
 const modal = document.getElementById('modal');
-const buttonCancel = document.querySelector('.cancel-button');
-const buttonCancelEdit = document.getElementById('cancel-button');
 const modalEdit = document.getElementById('modal-edit');
-const editTask = document.getElementById('form-edit');
 const taskNameEdit = document.getElementById('modalname');
 const taskDescriptionEdit = document.getElementById('modadescription');
 const taskPriorityEdit = document.getElementById('modalpriority');
@@ -94,37 +90,33 @@ const saveAndRender = () => {
   render();
 };
 
-listsContainer.addEventListener('click', e => {
+const projectsContainer = (e) => {
   if (e.target.tagName.toLowerCase() === 'li') {
     selectedListId = e.target.dataset.listId;
     saveAndRender();
   }
-});
+};
 
-buttonModal.addEventListener('click', () => {
-  modal.classList.remove('modal-active');
-});
-
-listTasks.addEventListener('click', e => {
+const listTodos = (e) => {
   if (e.target.tagName.toLowerCase() === 'input') {
     const selectedList = lists.find(list => list.id === selectedListId);
     const selectedTask = selectedList.tasks.find(task => task.id === e.target.id);
     selectedTask.complete = e.target.checked;
     save();
   }
-});
+};
 
-deleteListButton.addEventListener('click', () => {
+const deleteListProjects = () => {
   lists = lists.filter(list => list.id !== selectedListId);
   selectedListId = null;
   saveAndRender();
-});
+};
 
-clearCompleteButton.addEventListener('click', () => {
+const clearbuttonTasks = () => {
   const selectedList = lists.find(list => list.id === selectedListId);
   selectedList.tasks = selectedList.tasks.filter(task => !task.complete);
   saveAndRender();
-});
+};
 
 const createList = (name) => ({ id: Date.now().toString(), name, tasks: [] });
 
@@ -142,7 +134,7 @@ const createTask = (name, desc, time, prior) => ({
   id: Date.now().toString(), name, desc, time, prior, completed: false,
 });
 
-newTaskForm.addEventListener('submit', e => {
+const todoForm = (e) => {
   e.preventDefault();
   const taskName = taskInput.value;
   if (taskName == null || taskName === '') return;
@@ -158,15 +150,7 @@ newTaskForm.addEventListener('submit', e => {
   selectedList.tasks.push(task);
   modal.classList.add('modal-active');
   saveAndRender();
-});
-
-buttonCancel.addEventListener('click', () => {
-  modal.classList.add('modal-active');
-});
-
-buttonCancelEdit.addEventListener('click', () => {
-  modalEdit.classList.add('modal-active');
-});
+};
 
 const getProjectIndex = (id) => lists.findIndex((pj) => pj.id === id);
 
@@ -197,14 +181,6 @@ const editTaskForm = (e) => {
   modalEdit.classList.add('modal-active');
 };
 
-editTask.addEventListener('click', editTaskForm);
-
-document.addEventListener('keydown', ({ key }) => {
-  if (key === 'Escape') {
-    modal.classList.add('modal-active');
-  }
-});
-
 const deleteLogic = (id) => {
   const projectIndex = getProjectIndex(selectedListId);
   const taskIndex = lists[projectIndex].tasks.findIndex(
@@ -219,8 +195,6 @@ const deleteTask = (e) => {
     deleteLogic(e.target.id);
   }
 };
-
-document.addEventListener('click', deleteTask);
 
 const clickHandler = (e) => {
   if (e.target.matches('.tryYes')) {
@@ -239,8 +213,6 @@ const clickHandler = (e) => {
     priority.value = task.prior;
   }
 };
-
-document.addEventListener('click', clickHandler);
 
 const defaultProject = () => {
   const list = createList('Default Project');
@@ -264,4 +236,11 @@ const defaultTask = () => {
   saveAndRender();
 };
 
-export { render, defaultProject, defaultTask };
+export {
+  render,
+  defaultProject,
+  defaultTask, listsContainer, projectsContainer,
+  modal, listTasks, listTodos, deleteListButton,
+  deleteListProjects, clearCompleteButton,
+  clearbuttonTasks, newTaskForm, todoForm, editTaskForm, modalEdit, deleteTask, clickHandler,
+};
