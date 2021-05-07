@@ -17,7 +17,6 @@ const buttonCancel = document.querySelector('.cancel-button');
 const buttonCancelEdit = document.getElementById('cancel-button');
 const modalEdit = document.getElementById('modal-edit');
 const editTask = document.getElementById('form-edit');
-// const taskNameEdit = document.getElementsByClassName('edit-task-name');
 const taskNameEdit = document.getElementById('modalname');
 const taskDescriptionEdit = document.getElementById('modadescription');
 const taskPriorityEdit = document.getElementById('modalpriority');
@@ -33,6 +32,48 @@ let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 const save = () => {
   localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists));
   localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
+};
+
+const clearElement = (element) => {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+};
+
+const renderList = () => {
+  lists.forEach(list => {
+    const listElement = document.createElement('li');
+    listElement.dataset.listId = list.id;
+    listElement.classList.add('list-name');
+    listElement.innerText = list.name;
+    if (list.id === selectedListId) {
+      listElement.classList.add('active-list');
+    }
+    listsContainer.appendChild(listElement);
+  });
+};
+
+const renderTasks = (selectedList) => {
+  selectedList.tasks.forEach(task => {
+    const taskElement = document.importNode(taskTemplate.content, true);
+    const checkbox = taskElement.querySelector('input');
+    checkbox.id = task.id;
+    checkbox.checked = task.complete;
+    const label = taskElement.querySelector('label');
+    label.htmlFor = task.id;
+    label.append(task.name);
+    const descTask = taskElement.getElementById('description-p');
+    const descTi = taskElement.getElementById('task-time');
+    const priorTask = taskElement.getElementById('task-prior');
+    const editButton = taskElement.getElementById('edit');
+    editButton.id = task.id;
+    const deleteTask = taskElement.getElementById('delete-button');
+    deleteTask.id = task.id;
+    priorTask.append(task.prior);
+    descTi.append(task.time);
+    descTask.append(task.desc);
+    listTasks.appendChild(taskElement);
+  });
 };
 
 const render = () => {
@@ -87,6 +128,8 @@ clearCompleteButton.addEventListener('click', () => {
   selectedList.tasks = selectedList.tasks.filter(task => !task.complete);
   saveAndRender();
 });
+
+const createList = (name) => ({ id: Date.now().toString(), name, tasks: [] });
 
 newListForm.addEventListener('submit', e => {
   e.preventDefault();
@@ -168,56 +211,6 @@ document.addEventListener('keydown', ({ key }) => {
 });
 
 
-function createList(name) {
-  return ({ id: Date.now().toString(), name, tasks: [] });
-}
-
-
-function renderTasks(selectedList) {
-  selectedList.tasks.forEach(task => {
-    const taskElement = document.importNode(taskTemplate.content, true);
-    const checkbox = taskElement.querySelector('input');
-    checkbox.id = task.id;
-    checkbox.checked = task.complete;
-    const label = taskElement.querySelector('label');
-    label.htmlFor = task.id;
-    label.append(task.name);
-    const descTask = taskElement.getElementById('description-p');
-    const descTi = taskElement.getElementById('task-time');
-    const priorTask = taskElement.getElementById('task-prior');
-    const editButton = taskElement.getElementById('edit');
-    editButton.id = task.id;
-    console.log(editButton)
-    const deleteTask = taskElement.getElementById('delete-button');
-    deleteTask.id = task.id;
-    console.log(deleteTask);
-    priorTask.append(task.prior);
-    descTi.append(task.time);
-    descTask.append(task.desc);
-    listTasks.appendChild(taskElement);
-  });
-}
-
-
-const renderList = () => {
-  lists.forEach(list => {
-    const listElement = document.createElement('li');
-    listElement.dataset.listId = list.id;
-    listElement.classList.add('list-name');
-    listElement.innerText = list.name;
-    if (list.id === selectedListId) {
-      listElement.classList.add('active-list');
-    }
-    listsContainer.appendChild(listElement);
-  });
-};
-
-const clearElement = (element) => {
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
-};
-
 const deleteLogic = (id) => {
   const projectIndex = getProjectIndex(selectedListId);
   const taskIndex = lists[projectIndex].tasks.findIndex(
@@ -229,7 +222,7 @@ const deleteLogic = (id) => {
 
 const deleteTask = (e) => {
   if (e.target.matches('.delete-task')) {
- deleteLogic(e.target.id);
+    deleteLogic(e.target.id);
   }
 };
 
@@ -255,6 +248,4 @@ const clickHandler = (e) => {
 
 document.addEventListener('click', clickHandler);
 
-export {
-  render,
-};
+export default render;
