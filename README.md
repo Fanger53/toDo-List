@@ -1,35 +1,35 @@
 <p align="center">
-  <a href="https://github.com/Fanger53/restaurant-webpack/tree/development">
+  <a href="https://github.com/Fanger53/toDo-List">
     <img src="https://res.cloudinary.com/growsurf-prod/image/upload/v1582211139/production/gnysw2objzekbagrqiax.png" alt="Logo" width="350" height="70">
   </a>
 </p>
 
-<h1 align="center">Restaurant Page: Maita Restaurant </h1>
+<h1 align="center">Todo List </h1>
 
 <p align="center">
   
   <br>
-   Maita Restaurant is an app created with only Javascript using Webpack.
+   Todo List is an App for managment projects and tasks.
 </p>
 
 <p align="center">
-  <a href="https://github.com/Fanger53/restaurant-webpack/issues">
+  <a href="https://github.com/Fanger53/toDo-List/issues">
     <img src="https://img.shields.io/badge/REPORT%20A%20BUG-purple?style=for-the-badge">
   </a>
    ‎ ‎ ‎ ‎
-  <a href="https://github.com/Fanger53/restaurant-webpack/tree/development">
+  <a href="https://github.com/Fanger53/toDo-List">
     <img src="https://img.shields.io/badge/Request%20a%20feature-purple?style=for-the-badge">
   </a>
 </p>
 
 
 
-## 👩🏼‍💻 About My Restaurant Page
+## 👩🏼‍💻 About Todo List App
 
-This is a restaurant page that was created with HTML and JavasCript, The HTML just contains in the body a div with an id= " content" and the whole content of the page is made with JavasCript. This project was created to learn about modularized code and how to work with modules using webpack.
+This is an app for managment projects and Tasks in a easy way, was creates usisn Html, Scss, javascript and webpack.
 
 
-<img width="800" alt="my Restaurant" src="https://user-images.githubusercontent.com/31552010/110899286-cda5c880-82ce-11eb-8a96-9c2025c7b93f.png">
+<img width="866" alt="todolist" src="https://user-images.githubusercontent.com/31552010/117403443-cadde300-aecd-11eb-913b-76b62b15b4cc.png">
 
 
 
@@ -38,7 +38,7 @@ This is a restaurant page that was created with HTML and JavasCript, The HTML ju
 
 ## 🔴 Live Demo:
 
-[Restaurant Page](https://raw.githack.com/Fanger53/restaurant-webpack/features/dist/index.html)
+[TodoList](https://raw.githack.com/Fanger53/toDo-List/prototype/dist/index.html)
 
 ## 🔧 Built with
 
@@ -56,18 +56,25 @@ This is a restaurant page that was created with HTML and JavasCript, The HTML ju
 To get a local copy up and running follow these simple steps:
 
 1. Open your terminal and cd where you want to store the project
-2. Run the following command - git clone git@github.com:Fanger53/restaurant-webpack.git
-3. Cd into the directory - cd restaurant-webpack
-4. Open the live server on your VScode
+2. Run the following command - git clone https://github.com/Fanger53/toDo-List.git
+3. Cd into the directory - cd toDo-List
+4. run "npm install"
+5. Open the live server on your VScode
 
 
-## 👥 Author
+## 👥 Authors
 
 👤 **David Leonardo Castillo R**
 
 - Github: [@David Castillo](https://github.com/Fanger53)
 - Twitter: [@David Castillo](https://twitter.com/DavidLe97005129)
 - Linkedin: [@David Castillo](https://www.linkedin.com/in/david-castillo-61ba10b8/)
+
+👤 **Mauricio Tabilo**
+
+- Github: [@Nexch](https://github.com/Nexch)
+- Twitter: [@@MfinchT](https://twitter.com/MfinchT)
+- Linkedin: [linkedin](https://www.linkedin.com/in/Nexch)
 
 
 ## 🤝 Contributions
