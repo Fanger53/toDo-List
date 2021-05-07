@@ -248,4 +248,26 @@ const clickHandler = (e) => {
 
 document.addEventListener('click', clickHandler);
 
-export default render;
+const defaultProject = () => {
+  const list = createList('Default Project');
+  if (lists === undefined || lists.length === 0) {
+    lists.push(list);
+  }
+  saveAndRender();
+};
+
+const defaultTask = () => {
+  const task = createTask(
+    'The firt task',
+    'Here you need to write the description of the task',
+    '2021-12-12',
+    '9',
+  );
+  const selectedList = lists[0];
+  if (selectedList.tasks === undefined || selectedList.tasks.length === 0) {
+    selectedList.tasks.push(task);
+  }
+  saveAndRender();
+};
+
+export { render, defaultProject, defaultTask };
