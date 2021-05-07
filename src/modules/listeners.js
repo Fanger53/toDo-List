@@ -46,6 +46,5 @@ const listeners = () => {
   document.addEventListener('click', clickHandler);
 };
 
-
 // eslint-disable-next-line import/prefer-default-export
 export { listeners };
