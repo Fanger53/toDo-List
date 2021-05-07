@@ -23,7 +23,6 @@ const taskPriorityEdit = document.getElementById('modalpriority');
 const taskTimeEdit = document.getElementById('modaldate');
 const clearCompleteButton = document.querySelector('[data-clear-complete-button]');
 
-
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedListId';
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
@@ -106,7 +105,6 @@ buttonModal.addEventListener('click', () => {
   modal.classList.remove('modal-active');
 });
 
-
 listTasks.addEventListener('click', e => {
   if (e.target.tagName.toLowerCase() === 'input') {
     const selectedList = lists.find(list => list.id === selectedListId);
@@ -121,7 +119,6 @@ deleteListButton.addEventListener('click', () => {
   selectedListId = null;
   saveAndRender();
 });
-
 
 clearCompleteButton.addEventListener('click', () => {
   const selectedList = lists.find(list => list.id === selectedListId);
@@ -171,7 +168,6 @@ buttonCancelEdit.addEventListener('click', () => {
   modalEdit.classList.add('modal-active');
 });
 
-
 const getProjectIndex = (id) => lists.findIndex((pj) => pj.id === id);
 
 const editTaskForm = (e) => {
@@ -201,7 +197,6 @@ const editTaskForm = (e) => {
   modalEdit.classList.add('modal-active');
 };
 
-
 editTask.addEventListener('click', editTaskForm);
 
 document.addEventListener('keydown', ({ key }) => {
@@ -209,7 +204,6 @@ document.addEventListener('keydown', ({ key }) => {
     modal.classList.add('modal-active');
   }
 });
-
 
 const deleteLogic = (id) => {
   const projectIndex = getProjectIndex(selectedListId);
