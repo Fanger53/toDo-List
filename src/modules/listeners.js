@@ -47,4 +47,5 @@ const listeners = () => {
 };
 
 
+// eslint-disable-next-line import/prefer-default-export
 export { listeners };
