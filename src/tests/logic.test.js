@@ -1,5 +1,5 @@
-import createTask from '../modules/logic';
-import createList from '../modules/logic';
+import { createTask, createList } from '../modules/logic';
+
 const jsdom = require('jsdom');
 
 const { JSDOM } = jsdom;
@@ -44,17 +44,18 @@ describe('create task', () => {
   it('Create a new task', () => {
     const idNumber = Date.now().toString();
     const create = createTask(
-      'Firt task',
+      'First task',
       'first task description',
       '2021-04-22',
       5,
     );
     expect(create).toEqual({
       id: idNumber,
-      date: '2021-04-22',
-      description: 'first task description',
-      name: 'Firt task',
-      priority: 5,
+      time: '2021-04-22',
+      desc: 'first task description',
+      name: 'First task',
+      prior: 5,
+      completed: false,
     });
   });
 
@@ -63,10 +64,11 @@ describe('create task', () => {
     const create = createTask();
     expect(create).toEqual({
       id: idNumber,
-      date: undefined,
-      description: undefined,
+      time: undefined,
+      desc: undefined,
       name: undefined,
-      priority: undefined,
+      prior: undefined,
+      completed: false,
     });
   });
 });
