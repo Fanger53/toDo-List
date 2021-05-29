@@ -2,13 +2,17 @@ import {
   listsContainer, projectsContainer, modal,
   listTasks, listTodos, deleteListButton,
   deleteListProjects, clearCompleteButton,
-  clearbuttonTasks, newTaskForm, todoForm, editTaskForm, modalEdit, deleteTask, clickHandler,
+  clearbuttonTasks, newTaskForm, todoForm,
+  editTaskForm, modalEdit, deleteTask, clickHandler, createList, saveAndRender,
+  lists,
 } from './logic';
 
 const buttonModal = document.getElementById('button-modal');
 const buttonCancel = document.querySelector('.cancel-button');
 const buttonCancelEdit = document.getElementById('cancel-button');
 const editTask = document.getElementById('form-edit');
+const newListForm = document.querySelector('[data-new-list-form]');
+const newListInput = document.querySelector('[data-new-list-input]');
 
 const listeners = () => {
   buttonModal.addEventListener('click', () => {
@@ -18,6 +22,16 @@ const listeners = () => {
   listsContainer.addEventListener('click', projectsContainer);
 
   listTasks.addEventListener('click', listTodos);
+
+  newListForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const listName = newListInput.value;
+    if (listName == null || listName === '') return;
+    const list = createList(listName);
+    newListInput.value = null;
+    lists.push(list);
+    saveAndRender();
+  });
 
   deleteListButton.addEventListener('click', deleteListProjects);
 
