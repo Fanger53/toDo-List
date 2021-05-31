@@ -1,3 +1,4 @@
+// eslint-disable-import/no-unresolved
 import jsdom from 'jsdom';
 
 import { createTask, createList } from '../modules/logic';
