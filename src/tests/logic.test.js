@@ -10,32 +10,32 @@ describe('taskManipulation', () => {
   }));
 
   it('Expects the projects projects container to not be null', () => {
-    const container = document.getElementsByClassName('g-container');
+    const container = document.getElementsByClassName('container');
     expect(container).toBeDefined();
   });
 
   it('Expects the projects section to not be null', () => {
-    const section = document.getElementsByClassName('section');
+    const section = document.getElementsByClassName('todo-list');
     expect(section).toBeDefined();
   });
 
   it('Expects the projects modal to not be null', () => {
-    const modal = document.getElementById('launch-modal');
+    const modal = document.getElementById('button-modal');
     expect(modal).toBeDefined();
   });
 
   it('Expects the projects modal to not be null', () => {
-    const modal = document.getElementById('task-modal');
+    const modal = document.getElementById('modal');
     expect(modal).toBeDefined();
   });
 
   it('Expects the projects modal to not be null', () => {
-    const modal = document.getElementById('delete-modal');
+    const modal = document.getElementById('delete-button');
     expect(modal).toBeDefined();
   });
 
   it('Expects the projects task container to not be null', () => {
-    const container = document.getElementsByClassName('task-container');
+    const container = document.getElementsByClassName('task-list');
     expect(container).toBeDefined();
   });
 });
@@ -59,7 +59,7 @@ describe('create task', () => {
     });
   });
 
-  it('If no input throws undefined', () => {
+  it('If the input throws undefined', () => {
     const idNumber = Date.now().toString();
     const create = createTask();
     expect(create).toEqual({
@@ -84,7 +84,7 @@ describe('create project', () => {
     });
   });
 
-  it('If no input throws undefined', () => {
+  it('If the input throws undefined', () => {
     const idNumber = Date.now().toString();
     const create = createList();
     expect(create).toEqual({
