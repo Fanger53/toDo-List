@@ -1,6 +1,5 @@
+import jsdom from 'jsdom';
 import { createTask, createList } from '../modules/logic';
-
-const jsdom = require('jsdom');
 
 const { JSDOM } = jsdom;
 
