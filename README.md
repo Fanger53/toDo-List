@@ -38,7 +38,7 @@ This is an app for managment projects and Tasks in a easy way, was creates usisn
 
 ## 🔴 Live Demo:
 
-[TodoList](https://raw.githack.com/Fanger53/toDo-List/prototype/dist/index.html)
+[TodoList](https://raw.githack.com/Fanger53/toDo-List/development/dist/index.html)
 
 ## 🔧 Built with
 
