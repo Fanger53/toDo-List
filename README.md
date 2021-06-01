@@ -61,6 +61,10 @@ To get a local copy up and running follow these simple steps:
 4. run "npm install"
 5. Open the live server on your VScode
 
+## :mechanical_arm: How to run the tests
+Open your terminal and cd into the directory - cd To-do-list$
+Run the following command - npm test
+
 
 ## 👥 Authors
 
